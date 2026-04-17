@@ -502,53 +502,54 @@
     width: 320px;
     max-width: 85vw;
     z-index: 999999;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
-    background: #000;
-    animation: stube-pip-in 0.3s ease;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+    background: transparent;
+    animation: stube-pip-in 0.25s ease;
 }
 [dir="rtl"] .stube-pip { right: auto; left: 16px; }
 
 @keyframes stube-pip-in {
-    from { opacity: 0; transform: translateY(30px) scale(0.9); }
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.stube-pip-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #1a1a2e;
-    padding: 6px 10px;
-    cursor: grab;
-    touch-action: none;
-    user-select: none;
-}
-.stube-pip-header:active { cursor: grabbing; }
-
-.stube-pip-drag-handle {
-    color: rgba(255,255,255,0.5);
-    font-size: 16px;
-}
 .stube-pip-close {
-    background: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 10;
+    background: rgba(0,0,0,0.55);
     border: none;
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     cursor: pointer;
-    padding: 0 4px;
     line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
 }
+[dir="rtl"] .stube-pip-close { right: auto; left: 4px; }
+.stube-pip-close:hover { background: rgba(0,0,0,0.85); }
+
 .stube-pip-video {
     position: relative;
     padding-top: 56.25%;
+    border-radius: 10px;
+    overflow: hidden;
+    touch-action: none;
 }
 .stube-pip-video iframe {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     border: none;
+    border-radius: 10px;
 }
 
 @media (min-width: 769px) {

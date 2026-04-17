@@ -11,7 +11,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'STUBE_VERSION', '1.3.1' );
+define( 'STUBE_VERSION', '1.3.3' );
 define( 'STUBE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'STUBE_URL', plugin_dir_url( __FILE__ ) );
 

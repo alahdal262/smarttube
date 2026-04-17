@@ -2,15 +2,17 @@
     'use strict';
 
     // ── Detect mobile ──
-    var isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    var isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+                || (window.innerWidth <= 768);
 
     // ── Lightbox (desktop) ──
     var lightbox = document.createElement('div');
     lightbox.className = 'stube-lightbox';
     lightbox.innerHTML = '<div class="stube-lightbox-inner">' +
         '<button class="stube-lightbox-close" aria-label="Close">&times;</button>' +
-        '<div class="stube-lightbox-video"><iframe id="stube-player" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe></div>' +
-        '</div>';
+        '<div class="stube-lightbox-video">' +
+        '<iframe id="stube-player" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>' +
+        '</div></div>';
     document.body.appendChild(lightbox);
 
     function openLightbox(videoId) {
@@ -31,31 +33,24 @@
     var pipDragData = {};
 
     function openPiP(videoId) {
-        closePiP(); // close any existing
+        closePiP();
         pipContainer = document.createElement('div');
         pipContainer.className = 'stube-pip';
         pipContainer.innerHTML =
-            '<div class="stube-pip-header">' +
-                '<span class="stube-pip-drag-handle">&#9776;</span>' +
-                '<button class="stube-pip-close" aria-label="Close">&times;</button>' +
-            '</div>' +
+            '<button class="stube-pip-close" aria-label="Close">&times;</button>' +
             '<div class="stube-pip-video">' +
                 '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&playsinline=1" ' +
                 'allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" frameborder="0"></iframe>' +
             '</div>';
         document.body.appendChild(pipContainer);
 
-        // Close button
         pipContainer.querySelector('.stube-pip-close').addEventListener('click', closePiP);
 
-        // Draggable on touch
-        var header = pipContainer.querySelector('.stube-pip-header');
-        header.addEventListener('touchstart', pipTouchStart, { passive: false });
-        header.addEventListener('touchmove', pipTouchMove, { passive: false });
-        header.addEventListener('touchend', pipTouchEnd);
-
-        // Also draggable on mouse (for tablet)
-        header.addEventListener('mousedown', pipMouseDown);
+        // Drag on the whole pip container
+        pipContainer.addEventListener('touchstart', pipTouchStart, { passive: false });
+        pipContainer.addEventListener('touchmove', pipTouchMove, { passive: false });
+        pipContainer.addEventListener('touchend', function() { pipDragData.dragging = false; });
+        pipContainer.addEventListener('mousedown', pipMouseDown);
     }
 
     function closePiP() {
@@ -65,7 +60,6 @@
         }
     }
 
-    // Touch drag
     function pipTouchStart(e) {
         var touch = e.touches[0];
         var rect = pipContainer.getBoundingClientRect();
@@ -75,28 +69,20 @@
         if (!pipDragData.dragging) return;
         e.preventDefault();
         var touch = e.touches[0];
-        var x = touch.clientX - pipDragData.startX;
-        var y = touch.clientY - pipDragData.startY;
-        // Clamp within viewport
-        x = Math.max(0, Math.min(window.innerWidth - pipContainer.offsetWidth, x));
-        y = Math.max(0, Math.min(window.innerHeight - pipContainer.offsetHeight, y));
+        var x = Math.max(0, Math.min(window.innerWidth - pipContainer.offsetWidth, touch.clientX - pipDragData.startX));
+        var y = Math.max(0, Math.min(window.innerHeight - pipContainer.offsetHeight, touch.clientY - pipDragData.startY));
         pipContainer.style.left = x + 'px';
         pipContainer.style.top = y + 'px';
         pipContainer.style.right = 'auto';
         pipContainer.style.bottom = 'auto';
     }
-    function pipTouchEnd() { pipDragData.dragging = false; }
-
-    // Mouse drag
     function pipMouseDown(e) {
         var rect = pipContainer.getBoundingClientRect();
         pipDragData = { startX: e.clientX - rect.left, startY: e.clientY - rect.top, dragging: true };
         function onMove(ev) {
             if (!pipDragData.dragging) return;
-            var x = ev.clientX - pipDragData.startX;
-            var y = ev.clientY - pipDragData.startY;
-            x = Math.max(0, Math.min(window.innerWidth - pipContainer.offsetWidth, x));
-            y = Math.max(0, Math.min(window.innerHeight - pipContainer.offsetHeight, y));
+            var x = Math.max(0, Math.min(window.innerWidth - pipContainer.offsetWidth, ev.clientX - pipDragData.startX));
+            var y = Math.max(0, Math.min(window.innerHeight - pipContainer.offsetHeight, ev.clientY - pipDragData.startY));
             pipContainer.style.left = x + 'px';
             pipContainer.style.top = y + 'px';
             pipContainer.style.right = 'auto';
@@ -116,24 +102,19 @@
         var link = e.target.closest('.stube-thumb-link');
         if (!link) return;
 
-        var mode = link.getAttribute('data-play-mode');
         var videoId = link.getAttribute('data-video-id');
-
         if (!videoId) return;
 
-        // Always prevent default for lightbox and inline modes
-        if (mode === 'lightbox' || mode === 'inline') {
-            e.preventDefault();
+        e.preventDefault();
+        e.stopPropagation();
 
-            if (isMobile) {
-                // Mobile: open PiP popup
-                openPiP(videoId);
-            } else {
-                // Desktop: open lightbox
-                openLightbox(videoId);
-            }
+        // Always use lightbox on desktop, PiP on mobile
+        // Regardless of play_mode setting — inline/lightbox both go through this
+        if (isMobile) {
+            openPiP(videoId);
+        } else {
+            openLightbox(videoId);
         }
-        // mode === 'newtab' → let the normal <a> navigation happen
     });
 
     // Close lightbox
@@ -157,17 +138,14 @@
         var tabName = tab.getAttribute('data-tab');
         var playlistId = tab.getAttribute('data-playlist');
 
-        // Activate tab button
         wrap.querySelectorAll('.stube-tab').forEach(function(t) { t.classList.remove('active'); });
         tab.classList.add('active');
 
-        // Show corresponding panel
         wrap.querySelectorAll('.stube-tab-panel').forEach(function(p) { p.style.display = 'none'; });
         var panel = wrap.querySelector('.stube-tab-panel[data-panel="' + tabName + '"]');
         if (panel) {
             panel.style.display = 'block';
 
-            // If panel has loading placeholder, fetch videos via AJAX
             var loading = panel.querySelector('.stube-tab-loading');
             if (loading && playlistId && playlistId !== 'week') {
                 loading.textContent = 'Loading...';
@@ -176,17 +154,10 @@
                 formData.append('action', 'stube_load_tab');
                 formData.append('playlist_id', playlistId);
 
-                fetch(getAjaxUrl(), {
-                    method: 'POST',
-                    body: formData
-                })
+                fetch(getAjaxUrl(), { method: 'POST', body: formData })
                 .then(function(r) { return r.text(); })
-                .then(function(html) {
-                    panel.innerHTML = html;
-                })
-                .catch(function() {
-                    loading.textContent = 'Error loading videos.';
-                });
+                .then(function(html) { panel.innerHTML = html; })
+                .catch(function() { loading.textContent = 'Error loading videos.'; });
             }
         }
     });
