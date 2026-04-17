@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SmartTube
  * Description: Display YouTube playlists and channel videos on your WordPress site with beautiful responsive grids, lightbox player, and auto-refresh. New uploads appear automatically.
- * Version: 1.0.0
+ * Version: 1.4.0
  * Author: SmartTube
  * Text Domain: smarttube
  * Requires at least: 5.0
