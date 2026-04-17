@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="catbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d4f4f"/>
+      <stop offset="100%" style="stop-color:#14706e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#catbg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="30" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#f5a623" text-anchor="middle">Category Page Override — Posts replaced by YouTube Videos</text>
+
+  <!-- Featured video section -->
+  <g transform="translate(20, 50)">
+    <!-- Featured thumbnail -->
+    <rect x="420" y="0" width="340" height="220" rx="0" fill="rgba(0,0,0,0.3)"/>
+    <rect x="430" y="10" width="320" height="200" fill="#222"/>
+    <!-- Play button -->
+    <path d="M565 85 L565 135 L605 110 Z" fill="#ff0000" opacity="0.9"/>
+    <!-- Badge -->
+    <rect x="640" y="175" width="100" height="26" rx="4" fill="rgba(0,80,80,0.9)" stroke="rgba(245,166,35,0.3)" stroke-width="1"/>
+    <text x="690" y="193" font-family="system-ui" font-size="11" font-weight="700" fill="#f5a623" text-anchor="middle">Yemen News</text>
+
+    <!-- Info section -->
+    <g transform="translate(30, 30)">
+      <text x="0" y="15" font-family="system-ui" font-size="13" fill="rgba(255,255,255,0.6)">17 April 2026</text>
+      <text x="0" y="55" font-family="system-ui, sans-serif" font-size="24" font-weight="800" fill="#fff" direction="rtl">
+        <tspan x="380" text-anchor="end">Latest News Headlines</tspan>
+      </text>
+      <text x="0" y="80" font-family="system-ui, sans-serif" font-size="22" font-weight="800" fill="#fff" direction="rtl">
+        <tspan x="380" text-anchor="end">from Yemen TV Channel</tspan>
+      </text>
+
+      <g transform="translate(0, 100)">
+        <text x="0" y="0" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">Duration: 15:42</text>
+        <text x="130" y="0" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">Views: 12,450</text>
+      </g>
+
+      <!-- Watch button -->
+      <rect x="0" y="120" width="140" height="40" rx="6" fill="#d4952a"/>
+      <text x="70" y="145" font-family="system-ui" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">Watch Now</text>
+    </g>
+  </g>
+
+  <!-- Video grid below -->
+  <g transform="translate(20, 290)">
+    <!-- Video card 1 -->
+    <rect x="0" y="0" width="248" height="140" fill="rgba(0,0,0,0.1)" rx="0"/>
+    <rect x="0" y="0" width="248" height="85" fill="#1a1a1a"/>
+    <path d="M110 28 L110 58 L132 43 Z" fill="rgba(255,0,0,0.8)"/>
+    <rect x="190" y="65" width="48" height="16" rx="3" fill="rgba(0,0,0,0.85)"/>
+    <text x="214" y="77" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">12:34</text>
+    <text x="10" y="105" font-family="system-ui" font-size="12" font-weight="600" fill="#fff">Video Title Episode 1</text>
+    <text x="10" y="125" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">15/04/2026</text>
+
+    <!-- Video card 2 -->
+    <rect x="256" y="0" width="248" height="140" fill="rgba(0,0,0,0.1)" rx="0"/>
+    <rect x="256" y="0" width="248" height="85" fill="#1a1a1a"/>
+    <path d="M366 28 L366 58 L388 43 Z" fill="rgba(255,0,0,0.8)"/>
+    <rect x="446" y="65" width="48" height="16" rx="3" fill="rgba(0,0,0,0.85)"/>
+    <text x="470" y="77" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">8:21</text>
+    <text x="266" y="105" font-family="system-ui" font-size="12" font-weight="600" fill="#fff">Video Title Episode 2</text>
+    <text x="266" y="125" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">14/04/2026</text>
+
+    <!-- Video card 3 -->
+    <rect x="512" y="0" width="248" height="140" fill="rgba(0,0,0,0.1)" rx="0"/>
+    <rect x="512" y="0" width="248" height="85" fill="#1a1a1a"/>
+    <path d="M622 28 L622 58 L644 43 Z" fill="rgba(255,0,0,0.8)"/>
+    <rect x="702" y="65" width="48" height="16" rx="3" fill="rgba(0,0,0,0.85)"/>
+    <text x="726" y="77" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">22:10</text>
+    <text x="522" y="105" font-family="system-ui" font-size="12" font-weight="600" fill="#fff">Video Title Episode 3</text>
+    <text x="522" y="125" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.5)">13/04/2026</text>
+  </g>
+</svg>

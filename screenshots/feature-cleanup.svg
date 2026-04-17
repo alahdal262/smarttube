@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420">
+  <rect width="800" height="420" fill="#f0f0f1" rx="12"/>
+
+  <!-- Header -->
+  <g transform="translate(30, 20)">
+    <text x="0" y="24" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#1d2327">Post Cleanup</text>
+    <text x="0" y="46" font-family="system-ui" font-size="13" fill="#646970">Select categories, preview posts, delete in safe batches</text>
+  </g>
+
+  <!-- Card with red top border -->
+  <rect x="30" y="60" width="740" height="340" rx="8" fill="#fff" stroke="#dcdcde" stroke-width="1"/>
+  <rect x="30" y="60" width="740" height="4" fill="#d63638" rx="8 8 0 0"/>
+
+  <!-- Category checkboxes grid -->
+  <g transform="translate(50, 80)">
+    <text x="0" y="14" font-family="system-ui" font-size="14" font-weight="700" fill="#1d2327">Step 1: Select Categories</text>
+
+    <g transform="translate(0, 25)">
+      <!-- Row 1 -->
+      <rect x="0" y="0" width="165" height="30" rx="4" fill="#fef2f2" stroke="#d63638" stroke-width="1.5"/>
+      <text x="24" y="20" font-family="system-ui" font-size="12" fill="#1d2327">News</text>
+      <rect x="8" y="9" width="12" height="12" rx="2" fill="#d63638"/>
+      <text x="5" y="19" font-family="system-ui" font-size="10" fill="#fff">&#10003;</text>
+      <text x="148" y="20" font-family="system-ui" font-size="10" fill="#999">(6418)</text>
+
+      <rect x="175" y="0" width="165" height="30" rx="4" fill="#fef2f2" stroke="#d63638" stroke-width="1.5"/>
+      <text x="199" y="20" font-family="system-ui" font-size="12" fill="#1d2327">Sports</text>
+      <rect x="183" y="9" width="12" height="12" rx="2" fill="#d63638"/>
+      <text x="180" y="19" font-family="system-ui" font-size="10" fill="#fff">&#10003;</text>
+      <text x="320" y="20" font-family="system-ui" font-size="10" fill="#999">(230)</text>
+
+      <rect x="350" y="0" width="165" height="30" rx="4" fill="#fff" stroke="#dcdcde" stroke-width="1"/>
+      <text x="374" y="20" font-family="system-ui" font-size="12" fill="#1d2327">Culture</text>
+      <rect x="358" y="9" width="12" height="12" rx="2" fill="#fff" stroke="#c3c4c7" stroke-width="1"/>
+      <text x="498" y="20" font-family="system-ui" font-size="10" fill="#999">(85)</text>
+
+      <rect x="525" y="0" width="165" height="30" rx="4" fill="#fef2f2" stroke="#d63638" stroke-width="1.5"/>
+      <text x="549" y="20" font-family="system-ui" font-size="12" fill="#1d2327">Economy</text>
+      <rect x="533" y="9" width="12" height="12" rx="2" fill="#d63638"/>
+      <text x="530" y="19" font-family="system-ui" font-size="10" fill="#fff">&#10003;</text>
+      <text x="672" y="20" font-family="system-ui" font-size="10" fill="#999">(142)</text>
+    </g>
+
+    <text x="0" y="75" font-family="system-ui" font-size="12" fill="#646970">3 selected</text>
+    <rect x="80" y="62" width="110" height="26" rx="4" fill="#2271b1"/>
+    <text x="135" y="80" font-family="system-ui" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Preview Posts</text>
+  </g>
+
+  <!-- Results section -->
+  <g transform="translate(50, 190)">
+    <text x="0" y="14" font-family="system-ui" font-size="14" font-weight="700" fill="#1d2327">Step 2: Review &amp; Delete</text>
+
+    <!-- Toolbar -->
+    <rect x="0" y="25" width="700" height="36" rx="6" fill="#f6f7f7" stroke="#dcdcde" stroke-width="1"/>
+    <text x="12" y="48" font-family="system-ui" font-size="13" font-weight="600" fill="#1d2327">6,790 post(s) found</text>
+    <rect x="170" y="31" width="75" height="24" rx="4" fill="#fff" stroke="#c3c4c7" stroke-width="1"/>
+    <text x="207" y="48" font-family="system-ui" font-size="11" fill="#333" text-anchor="middle">Select All</text>
+    <rect x="570" y="31" width="120" height="24" rx="4" fill="#d63638"/>
+    <text x="630" y="48" font-family="system-ui" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Delete Selected</text>
+
+    <!-- Progress bar -->
+    <g transform="translate(0, 70)">
+      <text x="0" y="12" font-family="system-ui" font-size="12" fill="#646970">Deleting... 2,450 / 6,790</text>
+      <rect x="200" y="2" width="45" height="18" rx="4" fill="#fff" stroke="#d63638" stroke-width="1"/>
+      <text x="222" y="15" font-family="system-ui" font-size="10" fill="#d63638" text-anchor="middle">Stop</text>
+
+      <rect x="0" y="22" width="700" height="20" rx="10" fill="#f0f0f1" stroke="#dcdcde" stroke-width="1"/>
+      <rect x="1" y="23" width="252" height="18" rx="9" fill="linear-gradient(90deg,#d63638,#e74c3c)"/>
+      <rect x="1" y="23" width="252" height="18" rx="9" fill="#d63638"/>
+      <text x="126" y="36" font-family="system-ui" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">36%</text>
+    </g>
+
+    <!-- Table preview (2 rows) -->
+    <g transform="translate(0, 105)">
+      <rect x="0" y="0" width="700" height="28" fill="#fff" stroke="#dcdcde" stroke-width="0.5"/>
+      <rect x="8" y="6" width="14" height="14" rx="2" fill="#d63638"/>
+      <text x="6" y="17" font-family="system-ui" font-size="10" fill="#fff">&#10003;</text>
+      <rect x="30" y="4" width="36" height="20" rx="3" fill="#eee"/>
+      <text x="76" y="18" font-family="system-ui" font-size="12" font-weight="600" fill="#1d2327">Breaking news article title here...</text>
+      <text x="450" y="18" font-family="system-ui" font-size="11" fill="#646970">News</text>
+      <text x="560" y="18" font-family="system-ui" font-size="11" fill="#646970">2025-02-20</text>
+      <text x="670" y="18" font-family="system-ui" font-size="11" fill="#999">226956</text>
+
+      <rect x="0" y="28" width="700" height="28" fill="#fef2f2" stroke="#dcdcde" stroke-width="0.5" opacity="0.6"/>
+      <text x="350" y="46" font-family="system-ui" font-size="11" fill="#d63638" text-anchor="middle" font-style="italic">deleted...</text>
+    </g>
+
+    <!-- Status -->
+    <text x="0" y="180" font-family="system-ui" font-size="13" font-weight="600" fill="#00a32a">Done! 2,450 post(s) deleted, 2,380 image(s) removed</text>
+  </g>
+</svg>
