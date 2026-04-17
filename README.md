@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/WordPress-6.0%2B-blue?logo=wordpress" alt="WordPress"/>
   <img src="https://img.shields.io/badge/PHP-7.4%2B-purple?logo=php" alt="PHP"/>
   <img src="https://img.shields.io/badge/License-GPL--2.0-green" alt="License"/>
-  <img src="https://img.shields.io/badge/Version-1.3.1-orange" alt="Version"/>
+  <img src="https://img.shields.io/badge/Version-1.3.3-orange" alt="Version"/>
   <img src="https://img.shields.io/badge/RTL-Supported-teal" alt="RTL"/>
 </p>
 
@@ -127,7 +127,7 @@ Multi-category selection with batch deletion, progress bar, and stop button.
 
 ```
 smarttube/
-  smarttube.php                    # Main plugin file (v1.3.1)
+  smarttube.php                    # Main plugin file (v1.3.3)
   includes/
     class-youtube-api.php          # YouTube Data API wrapper with transient caching
     class-shortcode.php            # All shortcodes: grid, tabs, programs, category
@@ -186,6 +186,12 @@ Open PiP      Open Lightbox
 ---
 
 ## Changelog
+
+### 1.3.3
+- Clean PiP player — video only, no background or header bar, rounded corners
+- Small circular close button overlay on the video
+- All video clicks use lightbox (desktop) or PiP (mobile) automatically
+- Version cache-busting for reliable deployments
 
 ### 1.3.1
 - Added PiP (Picture-in-Picture) draggable popup for mobile playback
