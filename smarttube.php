@@ -11,7 +11,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'STUBE_VERSION', '1.3.3' );
+define( 'STUBE_VERSION', '1.4.0' );
 define( 'STUBE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'STUBE_URL', plugin_dir_url( __FILE__ ) );
 
@@ -19,7 +19,6 @@ require_once STUBE_DIR . 'includes/class-youtube-api.php';
 require_once STUBE_DIR . 'includes/class-shortcode.php';
 require_once STUBE_DIR . 'includes/class-widget.php';
 require_once STUBE_DIR . 'includes/class-admin.php';
-require_once STUBE_DIR . 'includes/class-cleanup.php';
 require_once STUBE_DIR . 'includes/class-category-override.php';
 
 final class SmartTube {
@@ -41,7 +40,6 @@ final class SmartTube {
         SmartTube_Category_Override::init();
         if ( is_admin() ) {
             new SmartTube_Admin();
-            SmartTube_Cleanup::init();
         }
     }
 

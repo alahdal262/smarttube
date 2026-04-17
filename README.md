@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/WordPress-6.0%2B-blue?logo=wordpress" alt="WordPress"/>
   <img src="https://img.shields.io/badge/PHP-7.4%2B-purple?logo=php" alt="PHP"/>
   <img src="https://img.shields.io/badge/License-GPL--2.0-green" alt="License"/>
-  <img src="https://img.shields.io/badge/Version-1.3.3-orange" alt="Version"/>
+  <img src="https://img.shields.io/badge/Version-1.4.0-orange" alt="Version"/>
   <img src="https://img.shields.io/badge/RTL-Supported-teal" alt="RTL"/>
 </p>
 
@@ -46,13 +46,6 @@ Fetch playlists from your YouTube channel, link to WordPress categories, set lim
   <img src="screenshots/feature-admin.svg" alt="Admin Dashboard" width="90%"/>
 </p>
 
-### Post Cleanup Tool
-Multi-category selection with batch deletion, progress bar, and stop button.
-
-<p align="center">
-  <img src="screenshots/feature-cleanup.svg" alt="Post Cleanup" width="90%"/>
-</p>
-
 ---
 
 ## Features
@@ -65,8 +58,7 @@ Multi-category selection with batch deletion, progress bar, and stop button.
 
 ### Playback Modes
 - **Lightbox** — Click-to-play popup on desktop with dark overlay and ESC to close
-- **PiP (Picture-in-Picture)** — Draggable floating video player on mobile
-- **Inline** — Replace thumbnail with embedded player in-place
+- **PiP (Picture-in-Picture)** — Clean draggable floating video player on mobile
 - **New Tab** — Open video on YouTube
 
 ### Admin Dashboard
@@ -76,13 +68,6 @@ Multi-category selection with batch deletion, progress bar, and stop button.
 - **Bulk Actions** — Enable/disable all, set limits in bulk, create categories automatically
 - **Exclude System** — Mark categories that should always show posts, never videos
 - **Filter Tabs** — View all/linked/unlinked playlists with search
-
-### Post Cleanup Tool
-- **Multi-Category Selection** — Select multiple categories with search and select all/none
-- **Preview Posts** — See all posts with thumbnails before deleting
-- **Batch Deletion** — Deletes posts + featured images in safe batches of 5 (avoids server WAF 403 blocks)
-- **Progress Bar** — Real-time progress with percentage and stop button
-- **Auto-retry** — Retries failed batches automatically with cooldown
 
 ### Customization
 - **CSS Variables** — `--stube-bg`, `--stube-header`, `--stube-accent`
@@ -127,13 +112,12 @@ Multi-category selection with batch deletion, progress bar, and stop button.
 
 ```
 smarttube/
-  smarttube.php                    # Main plugin file (v1.3.3)
+  smarttube.php                    # Main plugin file (v1.4.0)
   includes/
     class-youtube-api.php          # YouTube Data API wrapper with transient caching
     class-shortcode.php            # All shortcodes: grid, tabs, programs, category
     class-category-override.php    # Hooks into Jannah theme to replace post loops
     class-admin.php                # Admin: settings, playlist manager, category linker
-    class-cleanup.php              # Post cleanup tool (separate admin page)
     class-widget.php               # Sidebar widget for latest videos
   assets/
     css/
@@ -142,7 +126,6 @@ smarttube/
     js/
       admin.js                     # Admin: save, fetch, bulk actions, tabs builder
       frontend.js                  # Lightbox, PiP player, tab switching
-      cleanup.js                   # Batch deletion with progress bar
   screenshots/                     # README images
   languages/                       # Translation-ready
 ```
@@ -185,27 +168,26 @@ Open PiP      Open Lightbox
 
 ---
 
+## Related Plugins
+
+- **[PostCleaner](https://github.com/alahdal262/postcleaner)** — Bulk delete posts and images by category with progress bar
+
+---
+
 ## Changelog
 
-### 1.3.3
-- Clean PiP player — video only, no background or header bar, rounded corners
-- Small circular close button overlay on the video
-- All video clicks use lightbox (desktop) or PiP (mobile) automatically
-- Version cache-busting for reliable deployments
+### 1.4.0
+- Separated Post Cleanup into standalone plugin [PostCleaner](https://github.com/alahdal262/postcleaner)
+- SmartTube is now focused purely on YouTube video display
 
-### 1.3.1
-- Added PiP (Picture-in-Picture) draggable popup for mobile playback
-- Added Post Cleanup tool with multi-category selection and batch deletion
-- Fixed video limit not respected (cache key now includes limit)
-- Fixed lightbox not working on category override pages
-- Added progress bar with stop button for cleanup
-- Added auto-retry for failed deletion batches
+### 1.3.3
+- Clean PiP player — video only, no background or header bar
+- All video clicks use lightbox (desktop) or PiP (mobile) automatically
 
 ### 1.3.0
 - Category override system for Jannah theme
 - Excluded categories feature
 - Bulk enable/disable and limit actions
-- Auto-create categories for unlinked playlists
 
 ### 1.2.0
 - Tabbed programs layout
