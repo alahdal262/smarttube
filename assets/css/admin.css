@@ -1,0 +1,15 @@
+/* SmartTube Admin */
+.stube-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+}
+.stube-card h2 {
+    margin: 0 0 15px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #f0f0f1;
+    font-size: 16px;
+}
